@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v5.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v5.0": {
+      "ISE309.Odev.Core/1.0.0": {
+        "dependencies": {
+          "ISE309.Odev.Shared": "1.0.0"
+        },
+        "runtime": {
+          "ISE309.Odev.Core.dll": {}
+        }
+      },
+      "ISE309.Odev.Shared/1.0.0": {
+        "runtime": {
+          "ISE309.Odev.Shared.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "ISE309.Odev.Core/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "ISE309.Odev.Shared/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

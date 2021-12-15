@@ -1,0 +1,17 @@
+C:\Users\Hp\Desktop\ISE309.Odev\ISE309.Odev.BLL\bin\Debug\net5.0\ISE309.Odev.BLL.deps.json
+C:\Users\Hp\Desktop\ISE309.Odev\ISE309.Odev.BLL\bin\Debug\net5.0\ISE309.Odev.BLL.dll
+C:\Users\Hp\Desktop\ISE309.Odev\ISE309.Odev.BLL\bin\Debug\net5.0\ref\ISE309.Odev.BLL.dll
+C:\Users\Hp\Desktop\ISE309.Odev\ISE309.Odev.BLL\bin\Debug\net5.0\ISE309.Odev.BLL.pdb
+C:\Users\Hp\Desktop\ISE309.Odev\ISE309.Odev.BLL\bin\Debug\net5.0\ISE309.Odev.Core.dll
+C:\Users\Hp\Desktop\ISE309.Odev\ISE309.Odev.BLL\bin\Debug\net5.0\ISE309.Odev.Shared.dll
+C:\Users\Hp\Desktop\ISE309.Odev\ISE309.Odev.BLL\bin\Debug\net5.0\ISE309.Odev.Core.pdb
+C:\Users\Hp\Desktop\ISE309.Odev\ISE309.Odev.BLL\bin\Debug\net5.0\ISE309.Odev.Shared.pdb
+C:\Users\Hp\Desktop\ISE309.Odev\ISE309.Odev.BLL\obj\Debug\net5.0\ISE309.Odev.BLL.csproj.AssemblyReference.cache
+C:\Users\Hp\Desktop\ISE309.Odev\ISE309.Odev.BLL\obj\Debug\net5.0\ISE309.Odev.BLL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Hp\Desktop\ISE309.Odev\ISE309.Odev.BLL\obj\Debug\net5.0\ISE309.Odev.BLL.AssemblyInfoInputs.cache
+C:\Users\Hp\Desktop\ISE309.Odev\ISE309.Odev.BLL\obj\Debug\net5.0\ISE309.Odev.BLL.AssemblyInfo.cs
+C:\Users\Hp\Desktop\ISE309.Odev\ISE309.Odev.BLL\obj\Debug\net5.0\ISE309.Odev.BLL.csproj.CoreCompileInputs.cache
+C:\Users\Hp\Desktop\ISE309.Odev\ISE309.Odev.BLL\obj\Debug\net5.0\ISE309.Odev.BLL.csproj.CopyComplete
+C:\Users\Hp\Desktop\ISE309.Odev\ISE309.Odev.BLL\obj\Debug\net5.0\ISE309.Odev.BLL.dll
+C:\Users\Hp\Desktop\ISE309.Odev\ISE309.Odev.BLL\obj\Debug\net5.0\ref\ISE309.Odev.BLL.dll
+C:\Users\Hp\Desktop\ISE309.Odev\ISE309.Odev.BLL\obj\Debug\net5.0\ISE309.Odev.BLL.pdb

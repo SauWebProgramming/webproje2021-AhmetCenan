@@ -1,0 +1,11 @@
+C:\Users\Hp\Desktop\ISE309.Odev\ISE309.Odev.Shared\bin\Debug\net5.0\ISE309.Odev.Shared.deps.json
+C:\Users\Hp\Desktop\ISE309.Odev\ISE309.Odev.Shared\bin\Debug\net5.0\ISE309.Odev.Shared.dll
+C:\Users\Hp\Desktop\ISE309.Odev\ISE309.Odev.Shared\bin\Debug\net5.0\ref\ISE309.Odev.Shared.dll
+C:\Users\Hp\Desktop\ISE309.Odev\ISE309.Odev.Shared\bin\Debug\net5.0\ISE309.Odev.Shared.pdb
+C:\Users\Hp\Desktop\ISE309.Odev\ISE309.Odev.Shared\obj\Debug\net5.0\ISE309.Odev.Shared.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Hp\Desktop\ISE309.Odev\ISE309.Odev.Shared\obj\Debug\net5.0\ISE309.Odev.Shared.AssemblyInfoInputs.cache
+C:\Users\Hp\Desktop\ISE309.Odev\ISE309.Odev.Shared\obj\Debug\net5.0\ISE309.Odev.Shared.AssemblyInfo.cs
+C:\Users\Hp\Desktop\ISE309.Odev\ISE309.Odev.Shared\obj\Debug\net5.0\ISE309.Odev.Shared.csproj.CoreCompileInputs.cache
+C:\Users\Hp\Desktop\ISE309.Odev\ISE309.Odev.Shared\obj\Debug\net5.0\ISE309.Odev.Shared.dll
+C:\Users\Hp\Desktop\ISE309.Odev\ISE309.Odev.Shared\obj\Debug\net5.0\ref\ISE309.Odev.Shared.dll
+C:\Users\Hp\Desktop\ISE309.Odev\ISE309.Odev.Shared\obj\Debug\net5.0\ISE309.Odev.Shared.pdb
