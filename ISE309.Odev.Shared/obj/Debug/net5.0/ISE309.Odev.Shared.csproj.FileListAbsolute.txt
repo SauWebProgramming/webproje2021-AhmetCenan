@@ -9,3 +9,4 @@ C:\Users\Hp\Desktop\ISE309.Odev\ISE309.Odev.Shared\obj\Debug\net5.0\ISE309.Odev.
 C:\Users\Hp\Desktop\ISE309.Odev\ISE309.Odev.Shared\obj\Debug\net5.0\ISE309.Odev.Shared.dll
 C:\Users\Hp\Desktop\ISE309.Odev\ISE309.Odev.Shared\obj\Debug\net5.0\ref\ISE309.Odev.Shared.dll
 C:\Users\Hp\Desktop\ISE309.Odev\ISE309.Odev.Shared\obj\Debug\net5.0\ISE309.Odev.Shared.pdb
+C:\Users\Hp\Desktop\ISE309.Odev\ISE309.Odev.Shared\obj\Debug\net5.0\ISE309.Odev.Shared.csproj.AssemblyReference.cache

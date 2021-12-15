@@ -5,10 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="DbEntities\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\ISE309.Odev.Shared\ISE309.Odev.Shared.csproj" />
   </ItemGroup>
 
