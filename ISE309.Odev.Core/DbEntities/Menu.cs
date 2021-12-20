@@ -18,6 +18,6 @@ namespace ISE309.Odev.Core.DbEntities
 
         [ForeignKey(nameof(CategoryID))]
         public Category Category { get; set; }
-        public List<MenuProduct> MenuProducts { get; set; }
+        public ICollection<MenuProduct> MenuProducts { get; set; }
     }
 }

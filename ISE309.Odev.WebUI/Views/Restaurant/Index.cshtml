@@ -1,0 +1,45 @@
+﻿@model IEnumerable<ISE309.Odev.Core.DbEntities.Category>
+@{
+    ViewData["Title"] = "Restoran";
+}
+
+<div class="ml-5 col-lg">
+    <h2>
+        @ViewBag.res.RestaurantName
+    </h2>
+    <div>Restoran Puanı: <i class="fas fa-star text-warning"></i>@ViewBag.res.RestaurantRating</div>
+    <div>Restoran Min Tutar: @ViewBag.res.RestaurantMinDelivery &#8378</div>
+    <div>Restoran Sipariş Süresi: @ViewBag.res.RestaurantDeliveryTime dk.</div>
+    <div>Restoran Çalışma Saatleri: @ViewBag.res.RestaurantWorkingHours</div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            @foreach (var item in Model)
+            {
+                <div class="container p-4 m-5 bg-light category">
+                    <div class="float-left text-info col-12">
+                        <h2>@item.CategoryName</h2>
+                    </div>
+                    <div class="row mt-5">
+                        @foreach (var item1 in ViewBag.catprod)
+                        {
+
+                            @if (item1.CategoryID == item.CategoryID)
+                            {
+                                <div class="col bg-white mx-5 product-info">
+                                    <img src="https://cdn.yemeksepeti.com/ProductImages/TR_ISTANBUL/burger_king_guncel1/Kampanyalar_DortluBigKingFirsati_big.jpg" alt="@item1.MenuName" />
+                                    <h4>@item1.MenuName</h4>
+                                    <a class="text-danger" asp-action="AddCart" asp-route-id="@item1.MenuID"><i class="fa fa-plus"></i></a>
+                                    <h5 class="float-right">@item1.MenuPrice &#8378</h5>
+                                </div>
+                            }
+                        }
+                    </div>
+                </div>
+
+            }
+        </div>
+    </div>
+</div>

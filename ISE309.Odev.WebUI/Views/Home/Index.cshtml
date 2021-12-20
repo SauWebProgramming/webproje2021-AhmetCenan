@@ -1,8 +1,46 @@
-﻿@{
+﻿@model IEnumerable<ISE309.Odev.Core.DbEntities.Restaurant>
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container p-3">
+    <div class="row">
+        <div class="col-3">
+            <div class="card">
+                <div class="card-header">
+                    Sepetim
+                </div>
+                <div class="card-body">
+                    @await Component.InvokeAsync("Cart")
+                </div>
+            </div>
+        </div>
+        <div class="col-9">
+            <table class="table table-sm table-hover">
+                <caption>Restoran Listesi</caption>
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Restoran Adı</th>
+                        <th>Restoran Adresi</th>
+                        <th>Restoran Min Sipariş Ücreti (&#8378)</th>
+                        <th>Restoran Min Sipariş Süresi</th>
+                        <th>Restoran Derecesi</th>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                <a asp-controller="Restaurant" asp-action="Index" asp-route-id="@item.RestaurantID">@item.RestaurantName</a>
+                            </td>
+                            <td>@item.RestaurantAddress</td>
+                            <td>@item.RestaurantMinDelivery &#8378</td>
+                            <td>@item.RestaurantDeliveryTime</td>
+                            <td>@item.RestaurantRating</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>

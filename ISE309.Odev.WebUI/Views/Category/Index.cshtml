@@ -1,0 +1,17 @@
+﻿@model IEnumerable<ISE309.Odev.Core.DbEntities.Category>
+@{
+    ViewData["Title"] = "Categori";
+}
+
+<h1>Index</h1>
+<h2>
+    @ViewBag.res.RestaurantName
+</h2>
+@foreach (var item in Model)
+{
+    <div class="container">
+        <h2>@item.CategoryName</h2>
+
+    </div>
+}
+

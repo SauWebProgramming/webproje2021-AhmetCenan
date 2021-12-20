@@ -18,6 +18,6 @@ namespace ISE309.Odev.Core.DbEntities
         public double RestaurantRating { get; set; }
         public bool RestaurantStatus { get; set; }
         public DateTime RestaurantCreateTime { get; set; }
-        public List<Category> Categories { get; set; }
+        public ICollection<Category> Categories { get; set; }
     }
 }

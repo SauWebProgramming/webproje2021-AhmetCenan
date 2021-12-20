@@ -1,4 +1,6 @@
 ﻿using ISE309.Odev.Core.DbEntities;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -8,15 +10,16 @@ using System.Threading.Tasks;
 
 namespace ISE309.Odev.BLL.Data
 {
-    public class Context : DbContext
+    public class Context : IdentityDbContext<AppUser>
     {
-        public Context(DbContextOptions options) : base(options)
+        public Context(DbContextOptions<Context> options)
+            : base(options)
         {
-
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<MenuProduct>()
                 .HasKey(k => new { k.MenuID, k.ProductID });
             modelBuilder.Entity<MenuProduct>()
@@ -34,6 +37,5 @@ namespace ISE309.Odev.BLL.Data
         public DbSet<Order> Orders { get; set; }
         public DbSet<Menu> Menus { get; set; }
         public DbSet<Product> Products { get; set; }
-        public DbSet<Weight> Weights { get; set; }
     }
 }

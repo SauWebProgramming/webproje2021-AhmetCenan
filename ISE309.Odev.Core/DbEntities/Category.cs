@@ -17,5 +17,7 @@ namespace ISE309.Odev.Core.DbEntities
 
         [ForeignKey(nameof(RestaurantID))]
         public Restaurant Restaurant { get; set; }
+        public ICollection<Menu> Menus { get; set; }
+        public ICollection<Product> Products { get; set; }
     }
 }

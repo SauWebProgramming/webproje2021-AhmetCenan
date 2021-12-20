@@ -1,0 +1,16 @@
+﻿@if (ViewBag.cart.Count<=0)
+{
+    <span>Sepet Boş</span>
+}
+else
+{
+    <ul>
+        @foreach (var item in ViewBag.menus)
+        {
+
+        <li>@item.MenuName : @item.MenuPrice &#8378</li>
+        }
+    </ul>
+}
+
+
