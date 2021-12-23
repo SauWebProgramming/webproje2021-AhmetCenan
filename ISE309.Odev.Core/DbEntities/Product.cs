@@ -13,6 +13,7 @@ namespace ISE309.Odev.Core.DbEntities
         public string ProductName { get; set; }
         public double ProductPrice { get; set; }
         public int? CategoryID { get; set; }
+        public string ProductImage { get; set; }
         public bool ProductStatus { get; set; }
         public DateTime ProductCreateTime { get; set; }
 

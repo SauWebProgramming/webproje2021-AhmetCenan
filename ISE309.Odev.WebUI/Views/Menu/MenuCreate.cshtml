@@ -1,0 +1,53 @@
+﻿@model ISE309.Odev.Shared.DTO.Menu.MenuCreateDTO
+@{
+    ViewData["Title"] = "MenuCreate";
+}
+
+<h1>Yeni Menü</h1>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <form asp-route-id="@ViewBag.id" method="post">
+                <div class="container m-5 p-5">
+                    <div class="input-group mb-3">
+                        <label class="input-group" asp-for="MenuName"></label>
+                        <input class="form-control" asp-for="MenuName" />
+                    </div>
+                    <div class="input-group mb-3">
+                        <label class="input-group" asp-for="MenuPrice"></label>
+                        <input class="form-control" asp-for="MenuPrice" />
+                    </div>
+                    <div class="input-group mb-3">
+                        <label class="input-group" asp-for="CategoryID"></label>
+                        <select class="form-control" asp-for="CategoryID">
+                            @foreach (var item in ViewBag.categories)
+                            {
+                                <option value="@item.CategoryID">@item.CategoryName</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="input-group mb-3">
+                        <label class="input-group" asp-for="Products"></label>
+                        <select class="form-control" id="list1" multiple asp-for="Products" asp-items="@(List<SelectListItem>)ViewBag.products">
+                        </select>
+                        <input class="form-control" asp-for="deneme" value="0" />
+                        <select class="form-control" id="list2" multiple>
+
+                        </select>
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <label class="input-group" asp-for="Products"></label>
+                        <input id="text1" class="form-control" type="text" />
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <label class="input-group" asp-for="MenuImage"></label>
+                        <input class="form-control" asp-for="MenuImage" />
+                    </div>
+                    <button class="btn btn-success px-5" type="submit">Ekle</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

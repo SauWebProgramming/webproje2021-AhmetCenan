@@ -10,6 +10,7 @@ namespace ISE309.Odev.Core.DbEntities
     public class Order
     {
         public int OrderID { get; set; }
+        public string OrderDetails { get; set; }
         public string CustomerID { get; set; }
         public string CustomerAddress { get; set; }
         public DateTime OrderDate { get; set; }

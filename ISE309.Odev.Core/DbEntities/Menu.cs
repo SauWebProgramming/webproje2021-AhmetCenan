@@ -13,6 +13,7 @@ namespace ISE309.Odev.Core.DbEntities
         public string MenuName { get; set; }
         public double MenuPrice { get; set; }
         public int? CategoryID { get; set; }
+        public string MenuImage { get; set; }
         public bool MenuStatus { get; set; }
         public DateTime MenuCreateTime { get; set; }
 

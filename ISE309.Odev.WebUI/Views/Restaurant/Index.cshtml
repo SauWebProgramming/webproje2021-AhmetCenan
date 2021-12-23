@@ -1,44 +1,87 @@
-﻿@model IEnumerable<ISE309.Odev.Core.DbEntities.Category>
+﻿@using Microsoft.AspNetCore.Identity
+@using ISE309.Odev.Core.DbEntities
+@model Restaurant
 @{
     ViewData["Title"] = "Restoran";
 }
+@inject SignInManager<AppUser> SignInManager
+@inject UserManager<AppUser> UserManager
 
 <div class="ml-5 col-lg">
     <h2>
-        @ViewBag.res.RestaurantName
+        @Model.RestaurantName
     </h2>
-    <div>Restoran Puanı: <i class="fas fa-star text-warning"></i>@ViewBag.res.RestaurantRating</div>
-    <div>Restoran Min Tutar: @ViewBag.res.RestaurantMinDelivery &#8378</div>
-    <div>Restoran Sipariş Süresi: @ViewBag.res.RestaurantDeliveryTime dk.</div>
-    <div>Restoran Çalışma Saatleri: @ViewBag.res.RestaurantWorkingHours</div>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>
+                    Restoran Puanı:
+                    <i class="fas fa-star text-warning"></i>
+                    @Model.RestaurantRating
+                </th>
+                <th>
+                    Restoran Min Tutar: @Model.RestaurantMinDelivery &#8378
+                </th>
+                <th>
+                    Restoran Sipariş Süresi: @Model.RestaurantDeliveryTime dk.
+                </th>
+                <th>
+                    Restoran Çalışma Saatleri: @Model.RestaurantWorkingHours
+                </th>
+            </tr>
+        </thead>
+        @if (User.Identity.Name == Model.Owner.UserName)
+        {
+            <tbody>
+                <tr>
+                    <th>
+                        <a asp-action="CategoryList" asp-controller="Category" asp-route-id="@Model.RestaurantID">Kategoriler</a>
+                    </th>
+                    <th>
+                        <a asp-action="MenuList" asp-controller="Menu" asp-route-id="@Model.RestaurantID">Menuler</a>
+                    </th>
+                    <th>
+                        <a asp-action="ProductList" asp-controller="Product" asp-route-id="@Model.RestaurantID">Ürünler</a>
+                    </th>
+                </tr>
+            </tbody>
+        }
+    </table>
 </div>
 
 <div class="container">
     <div class="row">
         <div class="col-12">
-            @foreach (var item in Model)
+            @foreach (var item in Model.Categories)
             {
-                <div class="container p-4 m-5 bg-light category">
-                    <div class="float-left text-info col-12">
-                        <h2>@item.CategoryName</h2>
-                    </div>
-                    <div class="row mt-5">
-                        @foreach (var item1 in ViewBag.catprod)
-                        {
-
-                            @if (item1.CategoryID == item.CategoryID)
+                if (item.CategoryStatus)
+                {
+                    <div class="container p-4 m-5 bg-light category">
+                        <div class="float-left text-info col-12">
+                            <h2>@item.CategoryName</h2>
+                        </div>
+                        <div class="row mt-5">
+                            @foreach (var menus in item.Menus)
                             {
                                 <div class="col bg-white mx-5 product-info">
-                                    <img src="https://cdn.yemeksepeti.com/ProductImages/TR_ISTANBUL/burger_king_guncel1/Kampanyalar_DortluBigKingFirsati_big.jpg" alt="@item1.MenuName" />
-                                    <h4>@item1.MenuName</h4>
-                                    <a class="text-danger" asp-action="AddCart" asp-route-id="@item1.MenuID"><i class="fa fa-plus"></i></a>
-                                    <h5 class="float-right">@item1.MenuPrice &#8378</h5>
+                                    <img src="@menus.MenuImage" alt="@menus.MenuName" />
+                                    <h4>@menus.MenuName</h4>
+                                    <a class="text-danger" asp-action="AddMenutoCart" asp-route-id="@menus.MenuID"><i class="fa fa-plus"></i></a>
+                                    <h5 class="float-right">@menus.MenuPrice &#8378</h5>
                                 </div>
                             }
-                        }
+                            @foreach (var products in item.Products)
+                            {
+                                <div class="col bg-white mx-5 product-info">
+                                    <img src="@products.ProductImage" alt="@products.ProductName" />
+                                    <h4>@products.ProductName</h4>
+                                    <a class="text-danger" asp-action="AddProducttoCart" asp-route-id="@products.ProductID"><i class="fa fa-plus"></i></a>
+                                    <h5 class="float-right">@products.ProductPrice &#8378</h5>
+                                </div>
+                            }
+                        </div>
                     </div>
-                </div>
-
+                }
             }
         </div>
     </div>

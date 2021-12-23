@@ -30,7 +30,7 @@ namespace ISE309.Odev.WebUI
         {
             services.AddDbContext<Context>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DataContext")));
-            services.AddIdentity<AppUser, IdentityRole>(options=> {
+            services.AddIdentity<AppUser, AppRole >(options=> {
                 options.User.RequireUniqueEmail = true;
                 options.Password.RequiredLength = 3;
                 options.Password.RequireNonAlphanumeric = false;

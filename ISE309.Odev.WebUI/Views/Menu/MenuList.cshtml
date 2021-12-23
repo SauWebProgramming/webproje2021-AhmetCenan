@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Menu>
+@{
+    ViewData["Title"] = "MenuList";
+}
+
+<h1>@ViewBag.Restaurant.RestaurantName 'in Menüleri</h1>
+<div class="container">
+    <a class="btn btn-primary" asp-action="MenuCreate" asp-route-id="@ViewBag.Restaurant.RestaurantID">Yeni Menü</a>
+</div>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Menü Adı</th>
+            <th>Menü Kategorisi</th>
+            <th>Menü Fiyatı</th>
+            <th>Menü Resmi</th>
+            <th>Menü Durumu</th>
+            <th>Sil / Düzenle</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.MenuName</td>
+                <td>@item.Category.CategoryName</td>
+                <td>@item.MenuPrice &#8378</td>
+                <td><img style="width:50px" src="@item.MenuImage" /></td>
+                <td>
+                    @if (@item.MenuStatus == true)
+                    {
+                        <span>Aktif</span>
+                    }
+                    else
+                    {
+                        <span>Pasif</span>
+                    }
+                </td>
+                <td class="d-flex justify-content-center">
+                    <a class="btn btn-danger mr-2" asp-action="MenuDelete" asp-route-id="@item.MenuID">Sil</a>
+                    <a class="btn btn-info ml-2" asp-action="MenuEdit" asp-route-id="@item.MenuID">Düzenle</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

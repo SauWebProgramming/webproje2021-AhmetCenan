@@ -1,16 +1,22 @@
-﻿@if (ViewBag.cart.Count<=0)
+﻿@if (ViewBag.cart.Count <= 0)
 {
-    <span>Sepet Boş</span>
+    <span class="m-4">Sepet Boş</span>
 }
 else
 {
-    <ul>
-        @foreach (var item in ViewBag.menus)
+<div class="m-4">
+    <ul style="list-style-type:none;padding:0">
+        @foreach (var item in ViewBag.cart)
         {
-
-        <li>@item.MenuName : @item.MenuPrice &#8378</li>
+            <li>@item.ItemName : @item.ItemPrice &#8378</li>
         }
     </ul>
+    <span>Toplam Fiyat : @ViewBag.totalPrice &#8378</span>
+</div>
+<div class="m-3">
+    <a class="btn btn-danger p-1" asp-action="CartDelete" asp-controller="Restaurant">Sepeti Boşalt</a>
+    <a class="btn btn-success p-1" href="#">Sepeti Onayla</a>
+</div>
 }
 
 

@@ -1,0 +1,40 @@
+﻿@model Restaurant
+@{
+    ViewData["Title"] = "CategoryList";
+}
+
+<h1>@Model.RestaurantName 'in Kategorileri</h1>
+<div class="container">
+    <a class="btn btn-primary" asp-action="CategoryCreate" asp-route-id="@Model.RestaurantID">Yeni Kategori</a>
+</div>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Kategori Adı</th>
+            <th>Kategori Durumu</th>
+            <th>Sil / Düzenle</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Categories)
+        {
+            <tr>
+                <td>@item.CategoryName</td>
+                <td>
+                    @if (@item.CategoryStatus == true)
+                    {
+                        <span>Aktif</span>
+                    }
+                    else
+                    {
+                        <span>Pasif</span>
+                    }
+                </td>
+                <td class="d-flex justify-content-center">
+                    <a class="btn btn-danger mr-2" asp-action="CategoryDelete" asp-route-id="@item.CategoryID">Sil</a>
+                    <a class="btn btn-info ml-2" asp-action="CategoryEdit" asp-route-id="@item.CategoryID">Düzenle</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

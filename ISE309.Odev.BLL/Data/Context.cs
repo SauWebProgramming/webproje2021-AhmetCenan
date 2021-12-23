@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ISE309.Odev.BLL.Data
 {
-    public class Context : IdentityDbContext<AppUser>
+    public class Context : IdentityDbContext<AppUser, AppRole, int>
     {
         public Context(DbContextOptions<Context> options)
             : base(options)

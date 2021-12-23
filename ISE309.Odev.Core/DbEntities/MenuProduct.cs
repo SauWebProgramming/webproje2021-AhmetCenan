@@ -12,6 +12,6 @@ namespace ISE309.Odev.Core.DbEntities
         public Menu Menu { get; set; }
         public int? ProductID { get; set; }
         public Product Product { get; set; }
-
+        public int Count { get; set; }
     }
 }

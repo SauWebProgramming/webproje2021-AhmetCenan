@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ISE309.Odev.Core.DbEntities
 {
-    public class AppUser : IdentityUser
+    public class AppUser : IdentityUser<int>
     {
         public string Name { get; set; }
         public string SurName { get; set; }

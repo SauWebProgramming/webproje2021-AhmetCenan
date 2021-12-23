@@ -14,11 +14,13 @@ namespace ISE309.Odev.WebUI.Controllers
     {
         public UserManager<AppUser> _userManager;
         public SignInManager<AppUser> _signInManager;
+        public RoleManager<AppRole> _roleManager;
 
-        public UserController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager)
+        public UserController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, RoleManager<AppRole> roleManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _roleManager = roleManager;
         }
 
         public IActionResult Details()
@@ -74,6 +76,7 @@ namespace ISE309.Odev.WebUI.Controllers
                     IdentityResult result = await _userManager.CreateAsync(newUser, user.Password);
                     if (result.Succeeded)
                     {
+                        await _userManager.AddToRoleAsync(newUser, "User");
                         return RedirectToAction("Details");
                     }
                     else
@@ -92,6 +95,17 @@ namespace ISE309.Odev.WebUI.Controllers
         {
             await _signInManager.SignOutAsync();
             return RedirectToAction("Index", "Home");
+        }
+
+        //Rol oluşturma
+        public async Task<IActionResult> CreateRole()
+        {
+            IdentityResult result = await _roleManager.CreateAsync(new AppRole { Name = "User" });
+            if (result.Succeeded)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            return RedirectToAction("Details");
         }
 
     }

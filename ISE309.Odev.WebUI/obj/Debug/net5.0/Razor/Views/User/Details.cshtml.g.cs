@@ -26,8 +26,15 @@ using ISE309.Odev.WebUI.Models;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 3 "C:\Users\Hp\Desktop\ISE309.Odev\ISE309.Odev.WebUI\Views\_ViewImports.cshtml"
+using ISE309.Odev.Core.DbEntities;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"75e48295fce4a312803e3ad4342d703a57649b0f", @"/Views/User/Details.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"3ae9e75f693a979eacc2a9043fd7170ed7f014cf", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"a22fe628e85347a92be3e0b1ad47127ddea3fab2", @"/Views/_ViewImports.cshtml")]
     public class Views_User_Details : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         #pragma warning disable 1998

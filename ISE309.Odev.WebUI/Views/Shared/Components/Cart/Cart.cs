@@ -1,4 +1,6 @@
 ﻿using ISE309.Odev.BLL.Data;
+using ISE309.Odev.Core.DbEntities;
+using ISE309.Odev.Shared.DTO;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -20,16 +22,19 @@ namespace ISE309.Odev.WebUI.Views.Shared.Components.Cart
 
         public IViewComponentResult Invoke()
         {
-            //var model = _db.Menus;
-            ViewBag.cart = new List<int>();
-            ViewBag.menus = new List<int>();
+            ViewBag.cart = new List<CartItems>();
             if (HttpContext.Session.GetString("Cart") != null)
             {
                 var cartlist = HttpContext.Session.GetString("Cart");
-                var cart = JsonSerializer.Deserialize<List<int>>(cartlist);
-                var model = _db.Menus.Where(x=> cart.Contains(x.MenuID));
+                var cart = JsonSerializer.Deserialize<List<CartItems>>(cartlist);
                 ViewBag.cart = cart;
-                ViewBag.menus = model;
+                double totalPrice = 0;
+                foreach (var item in cart)
+                {
+                    totalPrice += item.ItemPrice;
+                }
+                totalPrice = Math.Round(totalPrice,2);
+                ViewBag.totalPrice = totalPrice;
                 return View();
             }
             return View();

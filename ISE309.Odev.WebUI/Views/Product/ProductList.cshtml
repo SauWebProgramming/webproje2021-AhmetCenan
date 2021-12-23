@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Product>
+@{
+    ViewData["Title"] = "ProductList";
+}
+
+<h1>@ViewBag.Restaurant.RestaurantName 'in Ürünleri</h1>
+<div class="container">
+    <a class="btn btn-primary" asp-action="ProductCreate" asp-route-id="@ViewBag.Restaurant.RestaurantID">Yeni Ürün</a>
+</div>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Ürün Adı</th>
+            <th>Ürün Kategorisi</th>
+            <th>Ürün Fiyatı</th>
+            <th>Ürün Resmi</th>
+            <th>Ürün Durumu</th>
+            <th>Sil / Düzenle</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.ProductName</td>
+                <td>@item.Category.CategoryName</td>
+                <td>@item.ProductPrice &#8378</td>
+                <td><img style="width:50px" src="@item.ProductImage" /></td>
+                <td>
+                    @if (@item.ProductStatus == true)
+                    {
+                        <span>Aktif</span>
+                    }
+                    else
+                    {
+                        <span>Pasif</span>
+                    }
+                </td>
+                <td class="d-flex justify-content-center">
+                    <a class="btn btn-danger mr-2" asp-action="ProductDelete" asp-route-id="@item.ProductID">Sil</a>
+                    <a class="btn btn-info ml-2" asp-action="ProductEdit" asp-route-id="@item.ProductID">Düzenle</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

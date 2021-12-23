@@ -1,0 +1,37 @@
+﻿@model ISE309.Odev.Shared.DTO.Product.ProductEditDTO
+@{
+    ViewData["Title"] = "ProductEdit";
+}
+
+<h1>Ürün Düzenle</h1>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <form asp-route-id="@ViewBag.id" method="post">
+                <div class="container m-5 p-5">
+                    <div class="input-group mb-3">
+                        <label class="input-group" asp-for="ProductName"></label>
+                        <input class="form-control" asp-for="ProductName" />
+                    </div>
+                    <div class="input-group mb-3">
+                        <label class="input-group" asp-for="ProductPrice"></label>
+                        <input class="form-control" asp-for="ProductPrice" />
+                    </div>
+                    <div class="input-group mb-3">
+                        <label class="input-group" asp-for="ProductImage"></label>
+                        <input class="form-control" asp-for="ProductImage" />
+                    </div>
+                    <div class="input-group mb-3">
+                        <label class="input-group" asp-for="ProductStatus"></label>
+                        <input class="form-control" asp-for="ProductStatus" />
+                    </div>
+                    <div class="input-group mb-3">
+                        <label class="input-group" asp-for="Weights"></label>
+                        <input class="form-control" asp-for="Weights" />
+                    </div>
+                    <button class="btn btn-success px-5" type="submit">Kaydet</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
