@@ -12,6 +12,9 @@ namespace ISE309.Odev.Shared.DTO.Product
         [Required(ErrorMessage = "Lütfen Ürün Adı Giriniz.")]
         [Display(Name = "Ürün Adı")]
         public string ProductName { get; set; }
+        [Required(ErrorMessage = "Lütfen Ürün Adı Giriniz.")]
+        [Display(Name = "Ürün Adı (İngilizce)")]
+        public string ProductNameEN { get; set; }
         [Required(ErrorMessage = "Lütfen Ürün Fiyatı Giriniz.")]
         [Display(Name = "Ürün Fiyatı")]
         public double ProductPrice { get; set; }

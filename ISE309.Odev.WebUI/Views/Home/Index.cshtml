@@ -1,6 +1,9 @@
-﻿@model IEnumerable<ISE309.Odev.Core.DbEntities.Restaurant>
+﻿@model IEnumerable<Restaurant>
+
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer localizer
+
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Anasayfa";
 }
 
 <div class="container p-3">
@@ -8,7 +11,7 @@
         <div class="col-3">
             <div class="card">
                 <div class="card-header">
-                    Sepetim
+                    @localizer["Sepetim"]
                 </div>
                 <div class="card-body p-0">
                     @await Component.InvokeAsync("Cart")
@@ -17,14 +20,14 @@
         </div>
         <div class="col-9">
             <table class="table table-sm table-hover">
-                <caption>Restoran Listesi</caption>
+                <caption>@localizer["Restoran Listesi"]</caption>
                 <thead class="thead-dark">
                     <tr>
-                        <th>Restoran Adı</th>
-                        <th>Restoran Adresi</th>
-                        <th>Restoran Min Sipariş Ücreti (&#8378)</th>
-                        <th>Restoran Min Sipariş Süresi</th>
-                        <th>Restoran Derecesi</th>
+                        <th>@localizer["Restoran Adı"]</th>
+                        <th>@localizer["Restoran Adresi"]</th>
+                        <th>@localizer["Restoran Min Sipariş Ücreti"] (&#8378)</th>
+                        <th>@localizer["Restoran Min Sipariş Süresi"]</th>
+                        <th>@localizer["Restoran Derecesi"]</th>
                 </thead>
                 <tbody>
                     @foreach (var item in Model)

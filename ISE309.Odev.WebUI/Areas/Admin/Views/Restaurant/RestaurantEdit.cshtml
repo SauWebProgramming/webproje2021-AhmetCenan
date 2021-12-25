@@ -1,0 +1,56 @@
+﻿@model RestaurantEditDTO
+@{
+    ViewData["Title"] = "RestaurantEdit";
+}
+
+<h1>Restoran Düzenle</h1>
+<div class="row">
+    <div class="col">
+        <form asp-route-id="@ViewBag.id" method="post">
+            <div class="container m-5 p-5">
+                <div class="input-group mb-3">
+                    <label class="input-group" asp-for="RestaurantName"></label>
+                    <input class="form-control" asp-for="RestaurantName" />
+                </div>
+                <div class="input-group mb-3">
+                    <label class="input-group" asp-for="RestaurantOwner"></label>
+                    <select class="form-control" asp-for="RestaurantOwner">
+                        @foreach (var item in ViewBag.User)
+                        {
+                            <option value="@item.Id">@item.Name @item.SurName</option>
+                        }
+                    </select>
+                </div>
+                <div class="input-group mb-3">
+                    <label class="input-group" asp-for="RestaurantAddress"></label>
+                    <input class="form-control" asp-for="RestaurantAddress" />
+                </div>
+                <div class="input-group mb-3">
+                    <label class="input-group" asp-for="RestaurantWorkingHours"></label>
+                    <input class="form-control" asp-for="RestaurantWorkingHours" />
+                </div>
+                <div class="input-group mb-3">
+                    <label class="input-group" asp-for="RestaurantMinDelivery"></label>
+                    <input class="form-control" asp-for="RestaurantMinDelivery" />
+                </div>
+                <div class="input-group mb-3">
+                    <label class="input-group" asp-for="RestaurantDeliveryTime"></label>
+                    <input class="form-control" asp-for="RestaurantDeliveryTime" />
+                </div>
+                <div class="input-group mb-3">
+                    <label class="input-group" asp-for="RestaurantRating"></label>
+                    <input class="form-control" asp-for="RestaurantRating" />
+                </div>
+                <div class="input-group mb-3">
+                    <label class="input-group" asp-for="RestaurantLogoImage"></label>
+                    <input class="form-control" asp-for="RestaurantLogoImage" />
+                </div>
+                <div class="input-group mb-3">
+                    <label class="input-group" asp-for="RestaurantStatus"></label>
+                    <input class="form-control" asp-for="RestaurantStatus" />
+                </div>
+                <button class="btn btn-success px-5" type="submit">Kaydet</button>
+            </div>
+        </form>
+    </div>
+</div>

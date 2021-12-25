@@ -11,7 +11,6 @@ namespace ISE309.Odev.Core.DbEntities
     {
         public int RestaurantID { get; set; }
         public string RestaurantName { get; set; }
-        //public string RestaurantOwnerID { get; set; }
         public AppUser Owner { get; set; }
         public string RestaurantAddress { get; set; }
         public string RestaurantWorkingHours { get; set; }

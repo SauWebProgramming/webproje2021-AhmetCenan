@@ -105,17 +105,21 @@ namespace ISE309.Odev.WebUI.Controllers
         [HttpPost]
         public IActionResult CategoryEdit(CategoryEditDTO category, int id)
         {
-            var cat = _db.Categories.Find(id);
-            var ownerName = _db.Restaurants.Where(x => x.RestaurantID == cat.RestaurantID).Select(x => x.Owner.UserName).FirstOrDefault();
-            var currentUserName = User.Identity.Name;
-            if (ownerName != currentUserName)
+            if (ModelState.IsValid)
             {
-                return RedirectToAction("Error", "Home");
+                var cat = _db.Categories.Find(id);
+                var ownerName = _db.Restaurants.Where(x => x.RestaurantID == cat.RestaurantID).Select(x => x.Owner.UserName).FirstOrDefault();
+                var currentUserName = User.Identity.Name;
+                if (ownerName != currentUserName)
+                {
+                    return RedirectToAction("Error", "Home");
+                }
+                cat.CategoryName = category.CategoryName;
+                cat.CategoryStatus = category.CategoryStatus;
+                _db.SaveChanges();
+                return RedirectToAction("CategoryList", new { id = cat.RestaurantID });
             }
-            cat.CategoryName = category.CategoryName;
-            cat.CategoryStatus = category.CategoryStatus;
-            _db.SaveChanges();
-            return RedirectToAction("CategoryList", new { id = cat.RestaurantID });
+            return View();
         }
     }
 }

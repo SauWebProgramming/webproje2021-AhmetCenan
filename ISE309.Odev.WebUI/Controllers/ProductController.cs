@@ -49,7 +49,7 @@ namespace ISE309.Odev.WebUI.Controllers
                 return RedirectToAction("Error", "Home");
             }
             ViewBag.id = id;
-            ViewBag.categories = _db.Categories.Where(x=>x.RestaurantID == id).ToList();
+            ViewBag.categories = _db.Categories.Where(x => x.RestaurantID == id).ToList();
             return View();
         }
 
@@ -77,7 +77,7 @@ namespace ISE309.Odev.WebUI.Controllers
 
         public IActionResult ProductDelete(int id)
         {
-            var prod = _db.Products.Include(x=>x.Category).Where(x=>x.ProductID == id).FirstOrDefault();
+            var prod = _db.Products.Include(x => x.Category).Where(x => x.ProductID == id).FirstOrDefault();
             var ownerName = _db.Restaurants.Where(x => x.RestaurantID == prod.Category.RestaurantID).Select(x => x.Owner.UserName).FirstOrDefault();
             var currentUserName = User.Identity.Name;
             if (ownerName != currentUserName)
@@ -113,20 +113,24 @@ namespace ISE309.Odev.WebUI.Controllers
         [HttpPost]
         public IActionResult ProductEdit(ProductEditDTO product, int id)
         {
-            var prod = _db.Products.Include(x => x.Category).Where(x => x.ProductID == id).FirstOrDefault();
-            var ownerName = _db.Restaurants.Where(x => x.RestaurantID == prod.Category.RestaurantID).Select(x => x.Owner.UserName).FirstOrDefault();
-            var currentUserName = User.Identity.Name;
-            if (ownerName != currentUserName)
+            if (ModelState.IsValid)
             {
-                return RedirectToAction("Error", "Home");
+                var prod = _db.Products.Include(x => x.Category).Where(x => x.ProductID == id).FirstOrDefault();
+                var ownerName = _db.Restaurants.Where(x => x.RestaurantID == prod.Category.RestaurantID).Select(x => x.Owner.UserName).FirstOrDefault();
+                var currentUserName = User.Identity.Name;
+                if (ownerName != currentUserName)
+                {
+                    return RedirectToAction("Error", "Home");
+                }
+                prod.ProductName = product.ProductName;
+                prod.ProductPrice = product.ProductPrice;
+                prod.ProductImage = product.ProductImage;
+                prod.ProductStatus = product.ProductStatus;
+                prod.Weights = product.Weights;
+                _db.SaveChanges();
+                return RedirectToAction("ProductList", new { id = prod.Category.RestaurantID });
             }
-            prod.ProductName = product.ProductName;
-            prod.ProductPrice = product.ProductPrice;
-            prod.ProductImage = product.ProductImage;
-            prod.ProductStatus = product.ProductStatus;
-            prod.Weights = product.Weights;
-            _db.SaveChanges();
-            return RedirectToAction("ProductList", new { id = prod.Category.RestaurantID });
+            return View();
         }
     }
 }

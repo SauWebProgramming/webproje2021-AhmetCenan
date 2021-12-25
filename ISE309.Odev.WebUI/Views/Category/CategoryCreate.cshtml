@@ -2,22 +2,22 @@
 @{
     ViewData["Title"] = "CategoryCreate";
 }
-
-<h1>Kategori Oluştur</h1>
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer localizer
+<h1>@localizer["Kategori Oluştur"]</h1>
 <div class="container">
     <div class="row">
         <div class="col">
             <form asp-route-id="@ViewBag.id" method="post">
                 <div class="container m-5 p-5">
                     <div class="input-group mb-3">
-                        <label class="input-group" asp-for="CategoryName"></label>
+                        <label class="input-group">@localizer["Kategori Adı"]</label>
                         <input class="form-control" asp-for="CategoryName" />
                     </div>
                     <div class="input-group mb-3">
-                        <label class="input-group" asp-for="CategoryStatus"></label>
+                        <label class="input-group">@localizer["Kategori Durumu"]</label>
                         <input class="form-control" asp-for="CategoryStatus" />
                     </div>
-                    <button class="btn btn-success px-5" type="submit">Ekle</button>
+                    <button class="btn btn-success px-5" type="submit">@localizer["Ekle"]</button>
                 </div>
             </form>
         </div>

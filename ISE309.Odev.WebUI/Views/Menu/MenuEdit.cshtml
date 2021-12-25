@@ -2,30 +2,31 @@
 @{
     ViewData["Title"] = "MenuEdit";
 }
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer localizer
 
-<h1>Menü Düzenle</h1>
+<h1>@localizer["Düzenle"]</h1>
 <div class="container">
     <div class="row">
         <div class="col">
             <form asp-route-id="@ViewBag.id" method="post">
                 <div class="container m-5 p-5">
                     <div class="input-group mb-3">
-                        <label class="input-group" asp-for="MenuName"></label>
+                        <label class="input-group">@localizer["Menü Adı"]</label>
                         <input class="form-control" asp-for="MenuName" />
                     </div>
                     <div class="input-group mb-3">
-                        <label class="input-group" asp-for="MenuPrice"></label>
+                        <label class="input-group">@localizer["Menü Fiyatı"]</label>
                         <input class="form-control" asp-for="MenuPrice" />
                     </div>
                     <div class="input-group mb-3">
-                        <label class="input-group" asp-for="MenuImage"></label>
+                        <label class="input-group">@localizer["Menü Resmi"]</label>
                         <input class="form-control" asp-for="MenuImage" />
                     </div>
                     <div class="input-group mb-3">
-                        <label class="input-group" asp-for="MenuStatus"></label>
+                        <label class="input-group">@localizer["Menü Durumu"]</label>
                         <input class="form-control" asp-for="MenuStatus" />
                     </div>
-                    <button class="btn btn-success px-5" type="submit">Kaydet</button>
+                    <button class="btn btn-success px-5" type="submit">@localizer["Kaydet"]</button>
                 </div>
             </form>
         </div>

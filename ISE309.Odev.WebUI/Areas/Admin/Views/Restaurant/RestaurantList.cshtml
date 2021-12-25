@@ -1,0 +1,44 @@
+﻿@model IEnumerable<Restaurant>
+@{
+    ViewData["Title"] = "RestaurantList";
+}
+
+<div class="col-lg">
+    <h1>Tüm Restoranlar</h1>
+    <a class="btn btn-primary mb-4" asp-action="RestaurantCreate">Yeni Restoran Ekle</a>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <table class="table table-sm table-hover">
+            <caption>Restoran Listesi</caption>
+            <thead class="thead-dark">
+                <tr>
+                    <th>Restoran Adı</th>
+                    <th>Restoran Adresi</th>
+                    <th>Restoran Min Sipariş Ücreti (&#8378)</th>
+                    <th>Restoran Min Sipariş Süresi</th>
+                    <th>Restoran Derecesi</th>
+                    <th>Sil / Düzenle</th>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            <a asp-controller="Restaurant" asp-action="Index" asp-route-id="@item.RestaurantID">@item.RestaurantName</a>
+                        </td>
+                        <td>@item.RestaurantAddress</td>
+                        <td>@item.RestaurantMinDelivery &#8378</td>
+                        <td>@item.RestaurantDeliveryTime</td>
+                        <td>@item.RestaurantRating</td>
+                        <td>
+                            <a class="btn btn-danger" asp-action="RestaurantStatus" asp-route-id="@item.RestaurantID">Pasif Yap</a>
+                            <a class="btn btn-info" asp-action="RestaurantEdit" asp-route-id="@item.RestaurantID">Düzenle</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

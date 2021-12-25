@@ -1,0 +1,35 @@
+﻿@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer localizer
+@{
+    ViewData["Title"] = "Confirm";
+}
+
+<h1>@localizer["Sepeti Onayla"]</h1>
+<div class="m-4">
+    <ul style="list-style-type:none;padding:0">
+        @foreach (var item in ViewBag.cart)
+        {
+            <li>@item.ItemName : @item.ItemPrice &#8378</li>
+        }
+    </ul>
+    <span>@localizer["Toplam Fiyat"] : @ViewBag.totalPrice &#8378</span>
+</div>
+<div>
+    <form method="post">
+        <div class="input-group mb-3">
+            <label class="input-group">@localizer["Lütfen Adres Giriniz"]</label>
+            <textarea class="form-control" name="address" maxlength="150"></textarea>
+        </div>
+        <div class="input-group mb-3">
+            <label class="input-group">@localizer["Lütfen Ödeme Tipini Seçiniz"]</label>
+            <select class="form-control" name="payment">
+                <option value="Nakit">@localizer["Nakit"]</option>
+                <option value="Kart">@localizer["Kart"]</option>
+            </select>
+        </div>
+        <div class="input-group mb-3">
+            <label class="input-group">@localizer["Lütfen Tarih Seçiniz"]</label>
+            <input class="form-control" name="shippingdate" type="datetime-local" />
+        </div>
+        <button type="submit" class="btn btn-success">@localizer["Onayla"]</button>
+    </form>
+</div>

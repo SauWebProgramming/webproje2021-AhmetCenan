@@ -319,6 +319,14 @@
         "runtime": {
           "ISE309.Odev.WebUI.dll": {}
         },
+        "resources": {
+          "en/ISE309.Odev.WebUI.resources.dll": {
+            "locale": "en"
+          },
+          "tr/ISE309.Odev.WebUI.resources.dll": {
+            "locale": "tr"
+          }
+        },
         "compile": {
           "ISE309.Odev.WebUI.dll": {}
         }

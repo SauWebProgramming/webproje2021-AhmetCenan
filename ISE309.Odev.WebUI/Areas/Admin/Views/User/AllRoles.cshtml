@@ -1,0 +1,21 @@
+﻿@model IEnumerable<AppRole>
+@{
+    ViewData["Title"] = "AllRoles";
+}
+
+<h1>Tüm Roller</h1>
+<ul>
+    @foreach (var item in ViewBag.roles)
+    {
+        <li>@item.Name - <a asp-action="DeleteRole" asp-route-rolename="@item.Name">Rolü Sil</a></li>
+    }
+</ul>
+
+<form method="post" asp-action="CreateRole">
+    <div class="input-group mb-3">
+        <label class="input-group">Rol Adı</label>
+        <input class="form-control" type="text" name="role" />
+    </div>
+    <button class="btn btn-success" type="submit">Rol Ekle</button>
+</form>
+

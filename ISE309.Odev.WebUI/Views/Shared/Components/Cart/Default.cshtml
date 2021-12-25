@@ -1,22 +1,23 @@
-﻿@if (ViewBag.cart.Count <= 0)
+﻿@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer localizer
+@if (ViewBag.cart.Count <= 0)
 {
-    <span class="m-4">Sepet Boş</span>
+    <span class="m-4">@localizer["Sepet Boş"]</span>
 }
 else
 {
-<div class="m-4">
-    <ul style="list-style-type:none;padding:0">
-        @foreach (var item in ViewBag.cart)
-        {
-            <li>@item.ItemName : @item.ItemPrice &#8378</li>
-        }
-    </ul>
-    <span>Toplam Fiyat : @ViewBag.totalPrice &#8378</span>
-</div>
-<div class="m-3">
-    <a class="btn btn-danger p-1" asp-action="CartDelete" asp-controller="Restaurant">Sepeti Boşalt</a>
-    <a class="btn btn-success p-1" href="#">Sepeti Onayla</a>
-</div>
+    <div class="m-4">
+        <ul style="list-style-type:none;padding:0">
+            @foreach (var item in ViewBag.cart)
+            {
+                <li>@item.ItemName : @item.ItemPrice &#8378</li>
+            }
+        </ul>
+        <span>@localizer["Toplam Fiyat"] : @ViewBag.totalPrice &#8378</span>
+    </div>
+    <div class="m-3">
+        <a class="btn btn-danger p-1" asp-action="CartDelete" asp-controller="Restaurant">@localizer["Sepeti Boşalt"]</a>
+        <a class="btn btn-success p-1" asp-action="Confirm" asp-controller="Order">@localizer["Sepeti Onayla"]</a>
+    </div>
 }
 
 

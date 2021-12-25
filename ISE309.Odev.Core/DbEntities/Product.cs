@@ -11,6 +11,7 @@ namespace ISE309.Odev.Core.DbEntities
     {
         public int ProductID { get; set; }
         public string ProductName { get; set; }
+        //public string ProductNameEn { get; set; }
         public double ProductPrice { get; set; }
         public int? CategoryID { get; set; }
         public string ProductImage { get; set; }
@@ -20,6 +21,5 @@ namespace ISE309.Odev.Core.DbEntities
         [ForeignKey(nameof(CategoryID))]
         public Category Category { get; set; }
         public string Weights { get; set; }
-        public ICollection<MenuProduct> MenuProducts { get; set; }
     }
 }

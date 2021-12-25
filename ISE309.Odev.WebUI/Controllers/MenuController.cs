@@ -52,19 +52,6 @@ namespace ISE309.Odev.WebUI.Controllers
             }
             ViewBag.id = id;
             ViewBag.categories = _db.Categories.Where(x => x.RestaurantID == id).ToList();
-            //var products = _db.Products.Where(x => x.Category.RestaurantID == id).Select(x => new ProductDTO
-            //{
-            //    ProductID = x.ProductID,
-            //    ProductName = x.ProductName,
-            //    Count = 0,
-            //}).ToList();
-            var products = _db.Products.Where(x => x.Category.RestaurantID == id)
-                .Select(x => new SelectListItem 
-                { 
-                    Value = x.ProductID.ToString(),
-                    Text = x.ProductName +" - "+ x.Weights
-                }).ToList();
-            ViewBag.products = products;
             return View();
         }
 
@@ -105,6 +92,7 @@ namespace ISE309.Odev.WebUI.Controllers
 
         public IActionResult MenuEdit(int id)
         {
+
             var menu = _db.Menus.Include(x => x.Category).Where(x => x.MenuID == id).FirstOrDefault();
             var ownerName = _db.Restaurants.Where(x => x.RestaurantID == menu.Category.RestaurantID).Select(x => x.Owner.UserName).FirstOrDefault();
             var currentUserName = User.Identity.Name;
@@ -126,19 +114,23 @@ namespace ISE309.Odev.WebUI.Controllers
         [HttpPost]
         public IActionResult MenuEdit(MenuEditDTO menudto, int id)
         {
-            var menu = _db.Menus.Include(x => x.Category).Where(x => x.MenuID == id).FirstOrDefault();
-            var ownerName = _db.Restaurants.Where(x => x.RestaurantID == menu.Category.RestaurantID).Select(x => x.Owner.UserName).FirstOrDefault();
-            var currentUserName = User.Identity.Name;
-            if (ownerName != currentUserName)
+            if (ModelState.IsValid)
             {
-                return RedirectToAction("Error", "Home");
+                var menu = _db.Menus.Include(x => x.Category).Where(x => x.MenuID == id).FirstOrDefault();
+                var ownerName = _db.Restaurants.Where(x => x.RestaurantID == menu.Category.RestaurantID).Select(x => x.Owner.UserName).FirstOrDefault();
+                var currentUserName = User.Identity.Name;
+                if (ownerName != currentUserName)
+                {
+                    return RedirectToAction("Error", "Home");
+                }
+                menu.MenuName = menudto.MenuName;
+                menu.MenuPrice = menudto.MenuPrice;
+                menu.MenuImage = menudto.MenuImage;
+                menu.MenuStatus = menudto.MenuStatus;
+                _db.SaveChanges();
+                return RedirectToAction("MenuList", new { id = menu.Category.RestaurantID });
             }
-            menu.MenuName = menudto.MenuName;
-            menu.MenuPrice = menudto.MenuPrice;
-            menu.MenuImage = menudto.MenuImage;
-            menu.MenuStatus = menudto.MenuStatus;
-            _db.SaveChanges();
-            return RedirectToAction("MenuList", new { id = menu.Category.RestaurantID });
+            return View();
         }
     }
 }

@@ -11,15 +11,11 @@ namespace ISE309.Odev.Core.DbEntities
     {
         public int OrderID { get; set; }
         public string OrderDetails { get; set; }
-        public string CustomerID { get; set; }
+        public AppUser Customer { get; set; }
         public string CustomerAddress { get; set; }
         public DateTime OrderDate { get; set; }
         public DateTime? OrderShippingDate { get; set; }
         public double OrderPrice { get; set; }
         public string OrderPayment { get; set; }
-        public int RestaurantID { get; set; }
-
-        [ForeignKey(nameof(RestaurantID))]
-        public Restaurant Restaurant { get; set; }
     }
 }

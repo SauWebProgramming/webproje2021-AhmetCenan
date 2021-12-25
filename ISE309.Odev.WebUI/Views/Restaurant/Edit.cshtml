@@ -1,0 +1,37 @@
+﻿@model ISE309.Odev.Shared.DTO.Restaurant.RestaurantEditDTO
+@{
+    ViewData["Title"] = "Edit";
+}
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer localizer
+<h1>@localizer["Restoran Düzenleme"]</h1>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <form asp-route-id="@ViewBag.id" method="post">
+                <div class="container m-5 p-5">
+                    <div class="input-group mb-3">
+                        <label class="input-group">@localizer["Restoran Adresi"]</label>
+                        <input class="form-control" asp-for="RestaurantAddress" />
+                    </div>
+                    <div class="input-group mb-3">
+                        <label class="input-group">@localizer["Restoran Çalışma Saatleri"]</label>
+                        <input class="form-control" asp-for="RestaurantWorkingHours" />
+                    </div>
+                    <div class="input-group mb-3">
+                        <label class="input-group">@localizer["Restoran Min Tutar"]</label>
+                        <input class="form-control" asp-for="RestaurantMinDelivery" />
+                    </div>
+                    <div class="input-group mb-3">
+                        <label class="input-group">@localizer["Restoran Sipariş Süresi"]</label>
+                        <input class="form-control" asp-for="RestaurantDeliveryTime" />
+                    </div>
+                    <div class="input-group mb-3">
+                        <label class="input-group">@localizer["Restoran Logosu"]</label>
+                        <input class="form-control" asp-for="RestaurantLogoImage" />
+                    </div>
+                    <button class="btn btn-success px-5" type="submit">@localizer["Kaydet"]</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

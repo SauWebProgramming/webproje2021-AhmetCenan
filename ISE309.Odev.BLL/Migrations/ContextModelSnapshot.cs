@@ -179,24 +179,6 @@ namespace ISE309.Odev.BLL.Migrations
                     b.ToTable("Menus");
                 });
 
-            modelBuilder.Entity("ISE309.Odev.Core.DbEntities.MenuProduct", b =>
-                {
-                    b.Property<int?>("MenuID")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("ProductID")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Count")
-                        .HasColumnType("int");
-
-                    b.HasKey("MenuID", "ProductID");
-
-                    b.HasIndex("ProductID");
-
-                    b.ToTable("MenuProduct");
-                });
-
             modelBuilder.Entity("ISE309.Odev.Core.DbEntities.Order", b =>
                 {
                     b.Property<int>("OrderID")
@@ -207,8 +189,8 @@ namespace ISE309.Odev.BLL.Migrations
                     b.Property<string>("CustomerAddress")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("CustomerID")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int?>("CustomerId")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("OrderDate")
                         .HasColumnType("datetime2");
@@ -225,12 +207,9 @@ namespace ISE309.Odev.BLL.Migrations
                     b.Property<DateTime?>("OrderShippingDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("RestaurantID")
-                        .HasColumnType("int");
-
                     b.HasKey("OrderID");
 
-                    b.HasIndex("RestaurantID");
+                    b.HasIndex("CustomerId");
 
                     b.ToTable("Orders");
                 });
@@ -435,34 +414,13 @@ namespace ISE309.Odev.BLL.Migrations
                     b.Navigation("Category");
                 });
 
-            modelBuilder.Entity("ISE309.Odev.Core.DbEntities.MenuProduct", b =>
-                {
-                    b.HasOne("ISE309.Odev.Core.DbEntities.Menu", "Menu")
-                        .WithMany("MenuProducts")
-                        .HasForeignKey("MenuID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("ISE309.Odev.Core.DbEntities.Product", "Product")
-                        .WithMany("MenuProducts")
-                        .HasForeignKey("ProductID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Menu");
-
-                    b.Navigation("Product");
-                });
-
             modelBuilder.Entity("ISE309.Odev.Core.DbEntities.Order", b =>
                 {
-                    b.HasOne("ISE309.Odev.Core.DbEntities.Restaurant", "Restaurant")
+                    b.HasOne("ISE309.Odev.Core.DbEntities.AppUser", "Customer")
                         .WithMany()
-                        .HasForeignKey("RestaurantID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CustomerId");
 
-                    b.Navigation("Restaurant");
+                    b.Navigation("Customer");
                 });
 
             modelBuilder.Entity("ISE309.Odev.Core.DbEntities.Product", b =>
@@ -539,16 +497,6 @@ namespace ISE309.Odev.BLL.Migrations
                     b.Navigation("Menus");
 
                     b.Navigation("Products");
-                });
-
-            modelBuilder.Entity("ISE309.Odev.Core.DbEntities.Menu", b =>
-                {
-                    b.Navigation("MenuProducts");
-                });
-
-            modelBuilder.Entity("ISE309.Odev.Core.DbEntities.Product", b =>
-                {
-                    b.Navigation("MenuProducts");
                 });
 
             modelBuilder.Entity("ISE309.Odev.Core.DbEntities.Restaurant", b =>

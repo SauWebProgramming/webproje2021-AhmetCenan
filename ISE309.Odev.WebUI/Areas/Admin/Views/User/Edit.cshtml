@@ -1,0 +1,45 @@
+﻿@model UserEditDTO
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Kullanıcı Düzenle</h1>
+<div class="row">
+    <div class="col">
+        <form method="post">
+            <div class="container m-5 p-5">
+                <div class="input-group mb-3">
+                    <label class="input-group" asp-for="UserName"></label>
+                    <input class="form-control" asp-for="UserName" />
+                </div>
+                <div class="input-group mb-3">
+                    <label class="input-group" asp-for="Name"></label>
+                    <input class="form-control" asp-for="Name" />
+                </div>
+                <div class="input-group mb-3">
+                    <label class="input-group" asp-for="SurName"></label>
+                    <input class="form-control" asp-for="SurName" />
+                </div>
+                <div class="input-group mb-3">
+                    <label class="input-group" asp-for="Email"></label>
+                    <input class="form-control" asp-for="Email" />
+                </div>
+                <div>
+                    <ul>
+                        @foreach (var item in ViewBag.roles)
+                        {
+                            <li>@item -<a asp-action="DeleteUserRole" asp-route-role="@item" asp-route-id="@ViewBag.id">Rolü Çıkar</a></li>
+                        }
+                    </ul>
+                    <ul>
+                        @foreach (var item in ViewBag.otherroles)
+                        {
+                            <li>@item -<a asp-action="AddUserRole" asp-route-role="@item" asp-route-id="@ViewBag.id">Rolü Ekle</a></li>
+                        }
+                    </ul>
+                </div>
+                <button class="btn btn-success px-5" type="submit">Kaydet</button>
+            </div>
+        </form>
+    </div>
+</div>

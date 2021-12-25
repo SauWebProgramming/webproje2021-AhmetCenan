@@ -17,21 +17,6 @@ namespace ISE309.Odev.BLL.Data
         {
         }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<MenuProduct>()
-                .HasKey(k => new { k.MenuID, k.ProductID });
-            modelBuilder.Entity<MenuProduct>()
-                .HasOne(x => x.Menu)
-                .WithMany(y => y.MenuProducts)
-                .HasForeignKey(z => z.MenuID);
-            modelBuilder.Entity<MenuProduct>()
-                .HasOne(x => x.Product)
-                .WithMany(y => y.MenuProducts)
-                .HasForeignKey(z => z.ProductID);
-        }
-
         public DbSet<Restaurant> Restaurants { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Order> Orders { get; set; }

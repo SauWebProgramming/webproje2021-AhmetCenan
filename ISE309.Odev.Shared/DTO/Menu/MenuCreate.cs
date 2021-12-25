@@ -22,7 +22,5 @@ namespace ISE309.Odev.Shared.DTO.Menu
         public int CategoryID { get; set; }
         [Display(Name = "Menü Resmi")]
         public string MenuImage { get; set; }
-        public List<int> Products { get; set; }
-        public int deneme { get; set; }
     }
 }

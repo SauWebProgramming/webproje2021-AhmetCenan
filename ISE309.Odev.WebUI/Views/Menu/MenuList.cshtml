@@ -2,20 +2,20 @@
 @{
     ViewData["Title"] = "MenuList";
 }
-
-<h1>@ViewBag.Restaurant.RestaurantName 'in Menüleri</h1>
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer localizer
+<h1>@ViewBag.Restaurant.RestaurantName '@localizer["in Menüleri"]</h1>
 <div class="container">
-    <a class="btn btn-primary" asp-action="MenuCreate" asp-route-id="@ViewBag.Restaurant.RestaurantID">Yeni Menü</a>
+    <a class="btn btn-primary" asp-action="MenuCreate" asp-route-id="@ViewBag.Restaurant.RestaurantID">@localizer["Yeni Menü"]</a>
 </div>
 <table class="table table-bordered">
     <thead>
         <tr>
-            <th>Menü Adı</th>
-            <th>Menü Kategorisi</th>
-            <th>Menü Fiyatı</th>
-            <th>Menü Resmi</th>
-            <th>Menü Durumu</th>
-            <th>Sil / Düzenle</th>
+            <th>@localizer["Menü Adı"]</th>
+            <th>@localizer["Menü Kategorisi"]</th>
+            <th>@localizer["Menü Fiyatı"]</th>
+            <th>@localizer["Menü Resmi"]</th>
+            <th>@localizer["Menü Durumu"]</th>
+            <th>@localizer["Sil / Düzenle"]</th>
         </tr>
     </thead>
     <tbody>
@@ -29,16 +29,16 @@
                 <td>
                     @if (@item.MenuStatus == true)
                     {
-                        <span>Aktif</span>
+                        <span>@localizer["Aktif"]</span>
                     }
                     else
                     {
-                        <span>Pasif</span>
+                        <span>@localizer["Pasif"]</span>
                     }
                 </td>
                 <td class="d-flex justify-content-center">
-                    <a class="btn btn-danger mr-2" asp-action="MenuDelete" asp-route-id="@item.MenuID">Sil</a>
-                    <a class="btn btn-info ml-2" asp-action="MenuEdit" asp-route-id="@item.MenuID">Düzenle</a>
+                    <a class="btn btn-danger mr-2" asp-action="MenuDelete" asp-route-id="@item.MenuID">@localizer["Sil"]</a>
+                    <a class="btn btn-info ml-2" asp-action="MenuEdit" asp-route-id="@item.MenuID">@localizer["Düzenle"]</a>
                 </td>
             </tr>
         }

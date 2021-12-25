@@ -4,13 +4,17 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc.Authorization;
+using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -41,8 +45,21 @@ namespace ISE309.Odev.WebUI
                 .AddEntityFrameworkStores<Context>()
                 .AddDefaultUI()
                 .AddDefaultTokenProviders();
-            services.AddMvc();
             services.AddControllersWithViews();
+            services.AddLocalization(options => { options.ResourcesPath = "Resources"; });
+            services.AddMvc().AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix).AddDataAnnotationsLocalization();
+            services.Configure<RequestLocalizationOptions>(options =>
+                {
+                    var suppertedCultures = new List<CultureInfo>
+                    {
+                        new CultureInfo("tr"),
+                        new CultureInfo("en")
+                    };
+                    options.DefaultRequestCulture = new RequestCulture("tr");
+                    options.SupportedCultures = suppertedCultures;
+                    options.SupportedUICultures = suppertedCultures;
+                });
+            
             services.AddRazorPages();
             services.AddSession();
             
@@ -67,6 +84,8 @@ namespace ISE309.Odev.WebUI
             app.UseAuthorization();
 
             app.UseSession();
+
+            app.UseRequestLocalization(app.ApplicationServices.GetRequiredService<IOptions<RequestLocalizationOptions>>().Value);
 
             app.UseEndpoints(endpoints =>
             {

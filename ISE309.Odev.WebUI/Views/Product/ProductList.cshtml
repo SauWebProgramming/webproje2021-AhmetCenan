@@ -2,20 +2,21 @@
 @{
     ViewData["Title"] = "ProductList";
 }
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer localizer
 
-<h1>@ViewBag.Restaurant.RestaurantName 'in Ürünleri</h1>
+<h1>@ViewBag.Restaurant.RestaurantName '@localizer["in Ürünleri"]</h1>
 <div class="container">
-    <a class="btn btn-primary" asp-action="ProductCreate" asp-route-id="@ViewBag.Restaurant.RestaurantID">Yeni Ürün</a>
+    <a class="btn btn-primary" asp-action="ProductCreate" asp-route-id="@ViewBag.Restaurant.RestaurantID">@localizer["Yeni Ürün"]</a>
 </div>
 <table class="table table-bordered">
     <thead>
         <tr>
-            <th>Ürün Adı</th>
-            <th>Ürün Kategorisi</th>
-            <th>Ürün Fiyatı</th>
-            <th>Ürün Resmi</th>
-            <th>Ürün Durumu</th>
-            <th>Sil / Düzenle</th>
+            <th>@localizer["Ürün Adı"]</th>
+            <th>@localizer["Ürün Kategorisi"]</th>
+            <th>@localizer["Ürün Fiyatı"]</th>
+            <th>@localizer["Ürün Resmi"]</th>
+            <th>@localizer["Ürün Durumu"]</th>
+            <th>@localizer["Sil / Düzenle"]</th>
         </tr>
     </thead>
     <tbody>
@@ -29,16 +30,16 @@
                 <td>
                     @if (@item.ProductStatus == true)
                     {
-                        <span>Aktif</span>
+                        <span>@localizer["Aktif"]</span>
                     }
                     else
                     {
-                        <span>Pasif</span>
+                        <span>@localizer["Pasif"]</span>
                     }
                 </td>
                 <td class="d-flex justify-content-center">
-                    <a class="btn btn-danger mr-2" asp-action="ProductDelete" asp-route-id="@item.ProductID">Sil</a>
-                    <a class="btn btn-info ml-2" asp-action="ProductEdit" asp-route-id="@item.ProductID">Düzenle</a>
+                    <a class="btn btn-danger mr-2" asp-action="ProductDelete" asp-route-id="@item.ProductID">@localizer["Sil"]</a>
+                    <a class="btn btn-info ml-2" asp-action="ProductEdit" asp-route-id="@item.ProductID">@localizer["Düzenle"]</a>
                 </td>
             </tr>
         }

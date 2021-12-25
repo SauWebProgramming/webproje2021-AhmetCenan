@@ -2,6 +2,7 @@
 using ISE309.Odev.Core.DbEntities;
 using ISE309.Odev.Shared.DTO;
 using ISE309.Odev.Shared.DTO.Category;
+using ISE309.Odev.Shared.DTO.Restaurant;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
@@ -33,6 +34,54 @@ namespace ISE309.Odev.WebUI.Controllers
                 .Where(x => x.RestaurantID == id).FirstOrDefault();
             return View(restaurant);
         }
+        
+        [Authorize(Roles ="RestaurantOwner")]
+        public IActionResult Edit(int id)
+        {
+            var ownerName = _db.Restaurants.Where(x => x.RestaurantID == id).Select(x => x.Owner.UserName).FirstOrDefault();
+            var currentUserName = User.Identity.Name;
+            if (ownerName != currentUserName)
+            {
+                return RedirectToAction("Error", "Home");
+            }
+            var rest = _db.Restaurants.Find(id);
+            RestaurantEditDTO dto = new RestaurantEditDTO()
+            {
+                RestaurantAddress = rest.RestaurantAddress,
+                RestaurantWorkingHours = rest.RestaurantWorkingHours,
+                RestaurantMinDelivery = rest.RestaurantMinDelivery,
+                RestaurantDeliveryTime = rest.RestaurantDeliveryTime,
+                RestaurantLogoImage = rest.RestaurantLogoImage
+            };
+            ViewBag.id = rest.RestaurantID;
+            return View(dto);
+        }
+        
+        [HttpPost]
+        [Authorize(Roles ="RestaurantOwner")]
+        public IActionResult Edit(RestaurantEditDTO dto, int id)
+        {
+            if (ModelState.IsValid)
+            {
+                var ownerName = _db.Restaurants.Where(x => x.RestaurantID == id).Select(x => x.Owner.UserName).FirstOrDefault();
+                var currentUserName = User.Identity.Name;
+                if (ownerName != currentUserName)
+                {
+                    return RedirectToAction("Error", "Home");
+                }
+                var rest = _db.Restaurants.Find(id);
+                rest.RestaurantAddress = dto.RestaurantAddress;
+                rest.RestaurantWorkingHours = dto.RestaurantWorkingHours;
+                rest.RestaurantMinDelivery = dto.RestaurantMinDelivery;
+                rest.RestaurantDeliveryTime = dto.RestaurantDeliveryTime;
+                rest.RestaurantLogoImage = dto.RestaurantLogoImage;
+                _db.SaveChanges();
+                return RedirectToAction("Index", new { id = id });
+            }
+            return View();
+        }
+
+
 
         public IActionResult AddMenutoCart(int id)
         {

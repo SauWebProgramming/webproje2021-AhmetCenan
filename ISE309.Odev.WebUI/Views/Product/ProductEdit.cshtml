@@ -2,34 +2,35 @@
 @{
     ViewData["Title"] = "ProductEdit";
 }
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer localizer
 
-<h1>Ürün Düzenle</h1>
+<h1>@localizer["Ürün Düzenle"]</h1>
 <div class="container">
     <div class="row">
         <div class="col">
             <form asp-route-id="@ViewBag.id" method="post">
                 <div class="container m-5 p-5">
                     <div class="input-group mb-3">
-                        <label class="input-group" asp-for="ProductName"></label>
+                        <label class="input-group">@localizer["Ürün Adı"]</label>
                         <input class="form-control" asp-for="ProductName" />
                     </div>
                     <div class="input-group mb-3">
-                        <label class="input-group" asp-for="ProductPrice"></label>
+                        <label class="input-group">@localizer["Ürün Fiyatı"]</label>
                         <input class="form-control" asp-for="ProductPrice" />
                     </div>
                     <div class="input-group mb-3">
-                        <label class="input-group" asp-for="ProductImage"></label>
+                        <label class="input-group">@localizer["Ürün Resmi"]</label>
                         <input class="form-control" asp-for="ProductImage" />
                     </div>
                     <div class="input-group mb-3">
-                        <label class="input-group" asp-for="ProductStatus"></label>
+                        <label class="input-group">@localizer["Ürün Durumu"]</label>
                         <input class="form-control" asp-for="ProductStatus" />
                     </div>
                     <div class="input-group mb-3">
-                        <label class="input-group" asp-for="Weights"></label>
+                        <label class="input-group">@localizer["Ürün Gramajı"]</label>
                         <input class="form-control" asp-for="Weights" />
                     </div>
-                    <button class="btn btn-success px-5" type="submit">Kaydet</button>
+                    <button class="btn btn-success px-5" type="submit">@localizer["Kaydet"]</button>
                 </div>
             </form>
         </div>

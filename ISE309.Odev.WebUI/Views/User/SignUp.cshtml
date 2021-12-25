@@ -2,56 +2,57 @@
 @{
     ViewData["Title"] = "Kayıt Ol";
 }
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer localizer
 
 <div class="container">
     <div class="card">
         <div class="card-header">
             <h3 class="float-left text-dark">
-                @ViewBag.Title
+                @localizer["Kayıt Ol"]
             </h3>
         </div>
         <div class="card-body mx-5 my-2">
             <form method="post" class="row">
                 <div class="form-group col-6">
-                    <label asp-for="UserName"></label>
+                    <label>@localizer["Kullanıcı Adı"]</label>
                     <input class="form-control" asp-for="UserName" />
                     <span asp-validation-for="UserName" class="text-danger"></span>
                 </div>
                 <div class="form-group col-6">
-                    <label asp-for="Name"></label>
+                    <label>@localizer["Ad"]</label>
                     <input class="form-control" asp-for="Name" />
                     <span asp-validation-for="Name" class="text-danger"></span>
                 </div>
                 <div class="form-group col-6">
-                    <label asp-for="Email"></label>
+                    <label>Email</label>
                     <input class="form-control" asp-for="Email" />
                     <span asp-validation-for="Email" class="text-danger"></span>
                 </div>
                 <div class="form-group col-6">
-                    <label asp-for="SurName"></label>
+                    <label>@localizer["Soyad"]</label>
                     <input class="form-control" asp-for="SurName" />
                     <span asp-validation-for="SurName" class="text-danger"></span>
                 </div>
                 <div class="form-group col-6">
-                    <label asp-for="Password"></label>
+                    <label>@localizer["Şifre"]</label>
                     <input class="form-control" asp-for="Password" />
                     <span asp-validation-for="Password" class="text-danger"></span>
                 </div>
                 <div class="form-group col-6">
-                    <label asp-for="PhoneNumber"></label>
+                    <label>@localizer["Telefon Numarası"]</label>
                     <input class="form-control" asp-for="PhoneNumber" />
                     <span asp-validation-for="PhoneNumber" class="text-danger"></span>
                 </div>
                 <div class="form-group col-6">
-                    <label asp-for="ConfirmPassword"></label>
+                    <label>@localizer["Tekrar Şifre"]</label>
                     <input class="form-control" asp-for="ConfirmPassword" />
                     <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
                 </div>
                 <div class="form-group col-6 d-flex justify-content-center align-items-center">
                     <div class="d-flex justify-content-center ">
-                        <a href="@Url.Action("SignIn")" class="btn btn-danger  mx-1"><i class="fa fa-arrow-left"></i>Geri</a>
-                        <button class="btn btn-success mx-1" type="submit"><i class="fa fa-plus"></i>Kayıt Ol</button>
-                    </div>
+                        <a href="@Url.Action("SignIn")" class="btn btn-danger  mx-1"><i class="fa fa-arrow-left"></i>@localizer["Geri"]</a>
+                        <button class="btn btn-success mx-1" type="submit"><i class="fa fa-plus"></i>@localizer["Kayıt Ol"]</button>
+</div>
                 </div>
             </form>
         </div>
