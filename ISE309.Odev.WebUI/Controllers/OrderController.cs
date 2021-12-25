@@ -15,12 +15,14 @@ namespace ISE309.Odev.WebUI.Controllers
     public class OrderController : Controller
     {
         private readonly Context _db;
-        public readonly UserManager<AppUser> _userManager;
+        private readonly UserManager<AppUser> _userManager;
+        private readonly SignInManager<AppUser> _signInManager;
 
-        public OrderController(Context db, UserManager<AppUser> userManager)
+        public OrderController(Context db, UserManager<AppUser> userManager,SignInManager<AppUser> signInManager)
         {
             _db = db;
             _userManager = userManager;
+            _signInManager = signInManager;
         }
 
         public IActionResult Confirm()
@@ -52,6 +54,11 @@ namespace ISE309.Odev.WebUI.Controllers
         [HttpPost]
         public IActionResult Confirm(string address,string payment,string shippingdate)
         {
+            if (!_signInManager.IsSignedIn(User))
+            {
+                return RedirectToAction("SignIn","User");
+            }
+            
             ViewBag.cart = new List<CartItems>();
             ViewBag.desc = "";
             if (HttpContext.Session.GetString("Cart") != null)
@@ -71,6 +78,11 @@ namespace ISE309.Odev.WebUI.Controllers
                 totalPrice = Math.Round(totalPrice, 2);
                 var currentUser = _db.Users.Where(x => x.UserName == User.Identity.Name).FirstOrDefault();
                 var shipdate = DateTime.Parse(shippingdate);
+                if (string.IsNullOrEmpty(address))
+                {
+                    ViewBag.Message = String.Format("Upss {0}.\\n Adres Bos Birakilamaz", User.Identity.Name);
+                    return View();
+                }
                 Order order = new Order()
                 {
                     OrderDetails = orderDesc,

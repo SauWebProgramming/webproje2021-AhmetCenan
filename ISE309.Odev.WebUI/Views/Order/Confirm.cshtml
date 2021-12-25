@@ -17,7 +17,7 @@
     <form method="post">
         <div class="input-group mb-3">
             <label class="input-group">@localizer["Lütfen Adres Giriniz"]</label>
-            <textarea class="form-control" name="address" maxlength="150"></textarea>
+            <textarea class="form-control" required name="address" maxlength="150"></textarea>
         </div>
         <div class="input-group mb-3">
             <label class="input-group">@localizer["Lütfen Ödeme Tipini Seçiniz"]</label>
@@ -33,3 +33,11 @@
         <button type="submit" class="btn btn-success">@localizer["Onayla"]</button>
     </form>
 </div>
+@if (ViewBag.Message != null)
+{
+    <script type="text/javascript">
+        window.onload = function () {
+            alert("@ViewBag.Message");
+        };
+    </script>
+}
